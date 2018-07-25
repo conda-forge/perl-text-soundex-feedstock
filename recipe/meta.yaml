@@ -14,7 +14,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: True  # [ win ]
   script: perl Makefile.PL --no-xs && make && make test && make install
 
@@ -27,7 +27,7 @@ requirements:
 
 test:
   commands:
-    - perl -e 'use {{ name|replace("-","::") }}'
+    - perl
 
 about:
   home: https://metacpan.org/release/Text-Soundex
