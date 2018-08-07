@@ -8,11 +8,8 @@ osx_image: xcode6.4
 
 env:
   matrix:
-    
-    - CONDA_PERL=5.20.3.1
-    - CONDA_PERL=5.22.0.1
-    - CONDA_PERL=5.22.2.1
-    - CONDA_PERL=5.26.0
+    - CONFIG=osx_
+
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
     - secure: "QQ2FheuzbIoPX8Q5LBaxPIBMPn2V3A4Lh3LSDXeo+F1TXWPWknF1kf2VOferZYzA3+wNgf2TYgAUvXQzlKyItfbhOzVi1/P81Ey/tjUJ0lEoawwlyirwj2LD9wIxB6ZcH80b9PSxfVDcQsEh9mFTzjgFIAf/SIq6vxiFszJ3qdcwhr6vy203SVTLxuMHlOHe0Mos8jSnj7z6EmUzi+6JY8jXYwME3Vm3z1PSXKs7m31jDqQ743bdnrK5K3gq5eLd2jK2LiU8ovvgQxd5q/tEYEJAkdEpyEpQXennHRmfjns2IU+qikprz/ou+jdwryf7PeQKXUh399gSG1lNuUjvwBVcGWI/K8OloDlk15lDwMBHwHuruR8+RYayiqx5OGPeh/7/nl5zQGuENN58YSysyLDyJcpYJ/b+Q9RmqN2b6UA4j7x3/inCQx137wynpubse/oFSAJP8EzQYs+vntu8I8OzAGRUv952YobEWuZoJlJ/pivuE95+qqQMIZSF0NFdsSq3H3ONcFmp3lyYxkufiCCAnLsJGNvjSe9dbCtyWNB9CqufJH+aK5LtOYERN516Rhnk4b2vObE6vyKvZ+X7BjSlI6k4YbqFyhS/PxLvnO8pcwlQLe8oPs1WnmbNua4qfv473ZDDWBWpeLcGxFzfQGV7yn+ra0CVPNhT0E00vRI="
@@ -21,7 +18,7 @@ env:
 before_install:
     # Fast finish the PR.
     - |
-      (curl https://raw.githubusercontent.com/conda-forge/conda-forge-build-setup-feedstock/master/recipe/ff_ci_pr_build.py | \
+      (curl https://raw.githubusercontent.com/conda-forge/conda-forge-ci-setup-feedstock/master/recipe/ff_ci_pr_build.py | \
           python - -v --ci "travis" "${TRAVIS_REPO_SLUG}" "${TRAVIS_BUILD_NUMBER}" "${TRAVIS_PULL_REQUEST}") || exit 1
 
     # Remove homebrew.
@@ -53,10 +50,10 @@ install:
       conda config --add channels defaults
       conda config --add channels conda-forge
       conda config --set show_channel_urls true
-      conda install --yes --quiet conda-forge-build-setup
+      conda install --yes --quiet conda-forge-ci-setup=1
       source run_conda_forge_build_setup
 
 script:
-  - conda build ./recipe
+  - conda build ./recipe -m ./.ci_support/${CONFIG}.yaml
 
-  - upload_or_check_non_existence ./recipe conda-forge --channel=main
+  - upload_or_check_non_existence ./recipe conda-forge --channel=main -m ./.ci_support/${CONFIG}.yaml

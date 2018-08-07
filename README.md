@@ -20,14 +20,16 @@ algorithms. (Wikipedia, 2007)
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/perl-text-soundex-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/perl-text-soundex-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/perl-text-soundex-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/perl-text-soundex-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/perl-text-soundex-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/perl-text-soundex-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/perl-text-soundex-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/perl-text-soundex-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/perl-text-soundex/badges/version.svg)](https://anaconda.org/conda-forge/perl-text-soundex)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/perl-text-soundex/badges/downloads.svg)](https://anaconda.org/conda-forge/perl-text-soundex)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-perl--text--soundex-green.svg)](https://anaconda.org/conda-forge/perl-text-soundex) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/perl-text-soundex.svg)](https://anaconda.org/conda-forge/perl-text-soundex) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/perl-text-soundex.svg)](https://anaconda.org/conda-forge/perl-text-soundex) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/perl-text-soundex.svg)](https://anaconda.org/conda-forge/perl-text-soundex) |
 
 Installing perl-text-soundex
 ============================
