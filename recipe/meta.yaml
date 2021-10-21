@@ -1,16 +1,12 @@
-{% set author = "RJBS" %}
-{% set name = "Text-Soundex" %}
 {% set version = "3.05" %}
 {% set sha256 = "f6dd55b4280b25dea978221839864382560074e1d6933395faee2510c2db60ed" %}
 
-
 package:
-  name: perl-{{ name|lower }}
+  name: perl-text-soundex
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: http://cpan.metacpan.org/authors/id/{{ author[0] }}/{{ author[:2] }}/{{ author }}/{{ name }}-{{ version }}.tar.gz
+  url: http://cpan.metacpan.org/authors/id/R/RJ/RJBS/Text-Soundex-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -28,7 +24,7 @@ requirements:
 
 test:
   commands:
-    - perl -e 'use {{ name|replace("-","::") }}'
+    - perl -e 'use Text::Soundex'
 
 about:
   home: https://metacpan.org/release/Text-Soundex
