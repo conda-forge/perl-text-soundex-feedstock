@@ -1,37 +1,38 @@
-{% set author = "RJBS" %}
-{% set name = "Text-Soundex" %}
 {% set version = "3.05" %}
 {% set sha256 = "f6dd55b4280b25dea978221839864382560074e1d6933395faee2510c2db60ed" %}
 
-
 package:
-  name: perl-{{ name|lower }}
+  name: perl-text-soundex
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: http://cpan.metacpan.org/authors/id/{{ author[0] }}/{{ author[:2] }}/{{ author }}/{{ name }}-{{ version }}.tar.gz
+  url: http://cpan.metacpan.org/authors/id/R/RJ/RJBS/Text-Soundex-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
-  skip: True  # [ win ]
-  script: perl Makefile.PL --no-xs && make && make test && make install
+  number: 1001
+  noarch: generic
+  script:
+    - perl Makefile.PL INSTALLDIRS=vendor NO_PERLLOCAL=1 NO_PACKLIST=1 --no-xs
+    - make
+    - make test
+    - make install VERBINST=1
 
 requirements:
   build:
-    - perl
     - make
+  host:
+    - perl
   run:
     - perl
 
 test:
   commands:
-    - perl -e 'use {{ name|replace("-","::") }}'
+    - perl -e 'use Text::Soundex'
 
 about:
   home: https://metacpan.org/release/Text-Soundex
-  license: Artistic-2.0
+  license: GPL-1.0-or-later OR Artistic-1.0-Perl
   license_file: LICENSE
   summary: 'Implementation of the soundex algorithm.'
 
