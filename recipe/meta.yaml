@@ -12,7 +12,11 @@ source:
 build:
   number: 1001
   skip: True  # [ win ]
-  script: perl Makefile.PL --no-xs && make && make test && make install
+  script:
+    - perl Makefile.PL INSTALLDIRS=vendor NO_PERLLOCAL=1 NO_PACKLIST=1 --no-xs
+    - make
+    - make test
+    - make install VERBINST=1
 
 requirements:
   build:
